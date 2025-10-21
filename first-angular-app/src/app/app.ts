@@ -7,7 +7,7 @@ import { DUMMY_USERS } from './data';
   selector: 'app-root',
   imports: [HeaderComponent, UserComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css',
+  styleUrls: ['./app.css'],
 })
 export class App {
   protected readonly title = signal('first-angular-app');
