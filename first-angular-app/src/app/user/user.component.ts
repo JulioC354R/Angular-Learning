@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { DUMMY_USERS } from '../data';
-
+import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -9,15 +7,12 @@ import { DUMMY_USERS } from '../data';
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  selectedUser = DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)];
+  @Input() avatar!: string;
+  @Input() name!: string;
 
   get imagePath() {
-    // getter é uma function pra retornar um valor para a tela
-
-    return '/users/' + this.selectedUser.avatar;
+    return '/users/' + this.avatar;
   }
 
-  onSelectUser() {
-    this.selectedUser = DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)];
-  }
+  onSelectUser() {}
 }
