@@ -13,11 +13,13 @@ import { TasksComponent } from './task/task.component';
 export class App {
   protected readonly title = signal('first-angular-app');
   users = DUMMY_USERS;
+  selectedUserId = '';
 
-  name = 'Nenhum selecionado';
+  get selectedUser() {
+    return this.users.find((user) => user.id === this.selectedUserId);
+  }
 
   onSelectUser(id: string) {
-    const user = DUMMY_USERS.find((user) => user.id === id);
-    this.name = user?.name || 'Nenhum selecionado';
+    this.selectedUserId = id;
   }
 }
