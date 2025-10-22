@@ -16,7 +16,8 @@ export class App {
 
   name = 'Nenhum selecionado';
 
-  onSelectUser(name: string) {
-    this.name = name;
+  onSelectUser(id: string) {
+    const user = DUMMY_USERS.find((user) => user.id === id);
+    this.name = user?.name || 'Nenhum selecionado';
   }
 }
