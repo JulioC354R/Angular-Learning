@@ -1,17 +1,19 @@
 import { Component, Input, input, output } from '@angular/core';
 import { TaskComponent } from './task/task.component';
+import { NewTask } from './new-task/new-task';
+import { CreatedTask } from './new-task/new-task.model';
 
 @Component({
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
   selector: 'app-tasks',
   standalone: true,
-  imports: [TaskComponent],
+  imports: [TaskComponent, NewTask],
 })
 export class TasksComponent {
   @Input({ required: true }) userId!: string;
   @Input({ required: true }) name!: string;
-  showForm = false;
+  isAddingTask = false;
   taskIdIndex = 0;
   tasks = [
     {
@@ -45,28 +47,23 @@ export class TasksComponent {
     this.tasks = this.tasks.filter((task) => task.id !== id);
   }
 
-  showCreateTaskForm() {
-    this.showForm = true;
+  onStartAddTask() {
+    this.isAddingTask = true;
+  }
+  onCancelAddTask() {
+    this.isAddingTask = false;
   }
 
-  addTask() {
-    const titleInput = document.getElementById('newTaskTittle') as HTMLInputElement;
-    const title = titleInput.value || 'nada';
-    const summaryInput = document.getElementById('newTaskSummary') as HTMLInputElement;
-    const summary = summaryInput.value || 'nada';
-    const dueDateInput = document.getElementById('newTaskDueDate') as HTMLInputElement;
-    const dueDate = dueDateInput.value || 'nada';
-    this.tasks.push({
+  onAddTask(newTask: CreatedTask) {
+    this.tasks.unshift({
       id: this.getTaskId(),
       userId: this.userId,
-      title,
-      summary,
-      dueDate,
+      title: newTask.title,
+      summary: newTask.summary,
+      dueDate: newTask.date,
     });
-    titleInput.value = '';
-    summaryInput.value = '';
-    dueDateInput.value = '';
-    this.showForm = false;
+
+    this.isAddingTask = false;
   }
 
   getTaskId(): string {
