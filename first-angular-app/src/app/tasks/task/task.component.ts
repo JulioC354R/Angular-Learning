@@ -18,7 +18,7 @@ export class TaskComponent {
   @Input({ required: true }) task!: Task;
   @Output() complete = new EventEmitter<string>();
 
-  onCompleteTast() {
+  onCompleteTaskEmmiter() {
     this.complete.emit(this.task.id);
   }
 }

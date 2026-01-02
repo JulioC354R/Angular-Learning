@@ -2,7 +2,7 @@
   <header>
     <h2>{{ name }}' Tasks</h2>
     <menu>
-      <button>Add Task</button>
+      <button (click)="showCreateTaskForm()">Add Task</button>
     </menu>
   </header>
   <ul>
@@ -12,4 +12,12 @@
     </li>
     }
   </ul>
+  @if (showForm) {
+  <form id="createTaskForm">
+    <label> title: <input type="text" id="newTaskTittle" /> </label>
+    <label> summary: <input type="text" id="newTaskSummary" /></label>
+    <label> dueDate: <input type="text" id="newTaskDueDate" /></label>
+    <button type="button" (click)="addTask()">Add</button>
+  </form>
+  }
 </section>
