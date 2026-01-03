@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { TaskService } from './../tasks.service';
+import { Component, Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
 interface Task {
@@ -16,10 +17,10 @@ interface Task {
   styleUrl: './task.component.css',
 })
 export class TaskComponent {
+  constructor(private tasksService: TaskService) {}
   @Input({ required: true }) task!: Task;
-  @Output() complete = new EventEmitter<string>();
 
-  onCompleteTaskEmmiter() {
-    this.complete.emit(this.task.id);
+  onCompleteTask() {
+    this.tasksService.removeTask(this.task.id);
   }
 }

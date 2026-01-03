@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CreatedTask } from './new-task.model';
 import { TaskService } from '../tasks.service';
 
 @Component({
@@ -25,7 +24,7 @@ export class NewTaskComponent {
       {
         title: this.enteredTitle,
         summary: this.enteredSummary,
-        date: this.enteredDate,
+        dueDate: this.enteredDate,
       },
       this.userId
     );
