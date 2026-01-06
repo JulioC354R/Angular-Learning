@@ -2,14 +2,14 @@
 
 <main>
   <ul id="users">
-    @for (user of users; track user.id){
-    <li>
-      <app-user
-        [user]="user"
-        (select)="onSelectUser($event)"
-        [selected]="selectedUserId === user.id"
-      />
-    </li>
+    @for (user of users; track user.id) {
+      <li>
+        <app-user
+          [user]="user"
+          (select)="onSelectUser($event)"
+          [selected]="selectedUserId === user.id"
+        />
+      </li>
     }
   </ul>
   @if (selectedUser) {
