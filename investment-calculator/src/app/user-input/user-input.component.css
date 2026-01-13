@@ -4,5 +4,12 @@
 }
 
 .inputItem {
-  flex: 0 0 calc(50%);
+  text-align: center;
+}
+
+label {
+  margin-right: 5%;
+}
+form {
+  margin: 5%;
 }
