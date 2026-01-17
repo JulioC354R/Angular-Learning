@@ -1,15 +1,32 @@
 .inputsContainer {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 5%;
 }
 
 .inputItem {
-  text-align: center;
+  text-align: start;
+  margin: 5%;
+  display: flex;
+  flex-direction: column;
+}
+form {
+  margin: 5%;
+  padding: 5%;
+  background-color: rgb(3, 87, 52);
 }
 
 label {
   margin-right: 5%;
+  margin-bottom: 3%;
 }
-form {
-  margin: 5%;
+
+input {
+}
+
+button {
+  padding-left: 35%;
+  padding-right: 35%;
+  background-color: green;
+  font-weight: bolder;
 }
